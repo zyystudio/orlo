@@ -17,3 +17,8 @@ We can:
 	* pentaho-osgi-*.jar
 * Chnage platform PentahoSystem.java and remove OSGI dependencies, compile and generate the pentaho-platform-core-8.0.jar file to replace the existing one in PDI
 * Remove all unecessary plugins inside plugin/ folder, and we can allways get some back if required
+
+As suggestted at: https://blog.twineworks.com/improving-startup-time-of-pentaho-data-integration-78d0803c559b
+* Supply a host name explicitly by setting KETTLE_SYSTEM_HOSTNAME in ~/.kettle/kettle.properties.
+* Modify your hosts file so your hostname is associated with 127.0.0.1. See jvm-takes-a-long-time-to-resolve-ip-address-for-localhost
+* Ask the JVM to prefer ipv4 over ipv6, in case it is an ipv6 reverse lookup that takes a long time. You can do that by adding -Djava.net.preferIPv4Stack=true to the java options in kitchen.sh/bat or spoon.sh/bat. See https://docs.oracle.com/javase/8/docs/api/java/net/doc-files/net-properties.html
